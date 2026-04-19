@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@400;500;600;700;800&display=swap');
+@import "@fontsource-variable/geist";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --radius: 0.625rem;
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
+    @apply font-sans;
+  }
+
+  body {
+    @apply min-h-screen antialiased bg-background text-foreground;
+    font-family: 'Sora', sans-serif;
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+    transition: background-color 320ms ease, color 320ms ease;
+    background-image: radial-gradient(circle at 10% 0%, rgba(34, 211, 238, 0.12), transparent 40%),
+      radial-gradient(circle at 95% 15%, rgba(129, 140, 248, 0.16), transparent 46%),
+      linear-gradient(135deg, #04070f 0%, #080f23 45%, #030615 100%);
+    overscroll-behavior-y: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: rgba(56, 189, 248, 0.35);
+    color: #f8fbff;
+  }
+  .theme {
+    --font-heading: var(--font-sans);
+    --font-sans: 'Geist Variable', sans-serif;
+  }
+  .dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+  }
+}
+
+@layer components {
+  .glass {
+    @apply border border-white/[0.12] bg-white/[0.05] backdrop-blur-2xl;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 14px 42px rgba(1, 10, 30, 0.4);
+  }
+
+  .section-shell {
+    @apply glass relative overflow-hidden rounded-3xl p-5 sm:p-8 lg:p-10;
+  }
+
+  .animated-gradient-text {
+    @apply bg-gradient-to-r from-cyan-200 via-sky-300 to-indigo-300 bg-clip-text text-transparent;
+    background-size: 220% 220%;
+    animation: gradient-shift 6s ease-in-out infinite;
+    text-shadow: 0 0 22px rgba(56, 189, 248, 0.12);
+  }
+
+  .neon-border {
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.2), 0 0 26px rgba(34, 211, 238, 0.15),
+      0 0 46px rgba(99, 102, 241, 0.12);
+  }
+
+  .headline-gradient {
+    @apply bg-gradient-to-r from-cyan-200 via-sky-300 to-indigo-300 bg-clip-text text-transparent;
+    text-shadow: 0 0 24px rgba(56, 189, 248, 0.16);
+  }
+
+  .premium-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .premium-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.22), 0 0 22px rgba(34, 211, 238, 0.14);
+  }
+
+  .section-separator {
+    @apply relative h-px w-full;
+    background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.22) 25%, rgba(129, 140, 248, 0.18) 50%, rgba(56, 189, 248, 0.22) 75%, transparent 100%);
+    opacity: 0.7;
+  }
+
+  .noise-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='%23ffffff' fill-opacity='0.35'%3E%3Ccircle cx='8' cy='8' r='1'/%3E%3Ccircle cx='36' cy='48' r='1'/%3E%3Ccircle cx='82' cy='18' r='1'/%3E%3Ccircle cx='120' cy='62' r='1'/%3E%3Ccircle cx='64' cy='96' r='1'/%3E%3Ccircle cx='14' cy='124' r='1'/%3E%3Ccircle cx='96' cy='128' r='1'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@layer utilities {
+  .font-code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .hide-cursor-desktop {
+    @apply cursor-auto md:cursor-none;
+  }
+
+  .safe-wrap {
+    overflow-wrap: anywhere;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(5, 8, 20, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.62), rgba(99, 102, 241, 0.62));
+}
